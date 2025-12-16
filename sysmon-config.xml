@@ -1,0 +1,18 @@
+<Sysmon schemaversion="4.70">
+  <EventFiltering>
+
+    <!-- Log process creation -->
+    <ProcessCreate onmatch="include">
+      <Image condition="contains">powershell.exe</Image>
+      <Image condition="contains">cmd.exe</Image>
+      <Image condition="contains">pwsh.exe</Image>
+    </ProcessCreate>
+
+    <!-- Log network connections for major shells -->
+    <NetworkConnect onmatch="include">
+      <Image condition="contains">powershell.exe</Image>
+      <Image condition="contains">cmd.exe</Image>
+    </NetworkConnect>
+
+  </EventFiltering>
+</Sysmon>
